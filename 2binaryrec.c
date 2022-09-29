@@ -1,21 +1,20 @@
 #include <stdio.h>
 
-int search(int arr[],int start,int l, int tar){
+int search(int A[],int low,int high, int key){
 
-        int end=l,mid;
-while(start<=end){
-mid=(start+end)/2;
-if(arr[mid]<tar){
-    return(arr,mid+1,l,tar);
-}else if(arr[mid]>tar){
-    return(arr,start,mid-1,tar);
-}else{
-    return mid;
+     int mid=(low +high)/2;
+if(low>high){
+return -1;
 }
-
+if(key==A[mid]){
+return mid;
 }
- 
-    return -1;
+else if(key<A[mid]){
+return search(A,low,mid-1,key);
+}
+else{
+return search(A,mid+1,high,key);
+}
 }
 void main(){
 
